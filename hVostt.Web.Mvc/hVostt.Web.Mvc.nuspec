@@ -2,10 +2,11 @@
 <package >
   <metadata>
     <id>$id$</id>
-    <version>$version$</version>
+    <version>1.0.0.1</version>
     <title>$title$</title>
     <authors>hVostt</authors>
     <owners>hVostt</owners>
+    <projectUrl>https://github.com/hVostt/Web.Mvc</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>ASP.NET MVC 4 Useful Extensions</description>
     <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
