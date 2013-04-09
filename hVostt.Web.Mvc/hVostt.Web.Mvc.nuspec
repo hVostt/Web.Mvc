@@ -2,14 +2,14 @@
 <package >
   <metadata>
     <id>$id$</id>
-    <version>1.0.0.2</version>
+    <version>$version$</version>
     <title>$title$</title>
     <authors>hVostt</authors>
     <owners>hVostt</owners>
     <projectUrl>https://github.com/hVostt/Web.Mvc</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>ASP.NET MVC 4 Useful Extensions</description>
-    <releaseNotes>Added StringExtensions.</releaseNotes>
+    <releaseNotes>Added StringExtensions and NotFoundHttpException.</releaseNotes>
     <copyright>Copyright 2013</copyright>
     <tags>asp.net mvc4 extensions</tags>
   </metadata>

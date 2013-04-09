@@ -71,6 +71,7 @@
     <Compile Include="Js.cs" />
     <Compile Include="Helpers\LayoutHelpers.cs" />
     <Compile Include="Extensions\LinqExtensions.cs" />
+    <Compile Include="NotFoundHttpException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensions\ViewDataExtensions.cs" />
     <Compile Include="Extensions\WebViewPageExtensions.cs" />
