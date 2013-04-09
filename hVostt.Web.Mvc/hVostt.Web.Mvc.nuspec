@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>hVostt</authors>
+    <owners>hVostt</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>ASP.NET MVC 4 Useful Extensions</description>
+    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <copyright>Copyright 2013</copyright>
+    <tags>asp.net mvc4 extensions</tags>
+  </metadata>
+</package>
