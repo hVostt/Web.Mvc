@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 
 namespace hVostt.Web.Mvc.Extensions
 {
@@ -9,6 +10,16 @@ namespace hVostt.Web.Mvc.Extensions
 	/// </summary>
 	public static class StringExtensions
 	{
+		/// <summary>
+		/// Create RAW IHtmlString, that not be encoded in a template
+		/// </summary>
+		/// <param name="str">Source string</param>
+		/// <returns>Wrapped string in HtmlString</returns>
+		public static IHtmlString ToRaw(this string str)
+		{
+			return new HtmlString(str);
+		}
+
 		/// <summary>
 		/// Replaces one or more format items in a specified string with the string representation
 		/// of a specified object.

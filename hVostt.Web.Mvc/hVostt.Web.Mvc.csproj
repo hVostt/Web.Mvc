@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="Extensions\NumeralExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Js.cs" />
     <Compile Include="Helpers\LayoutHelpers.cs" />
