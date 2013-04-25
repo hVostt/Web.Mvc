@@ -5,6 +5,19 @@ namespace hVostt.Web.Mvc.Extensions
 {
 	public static class ViewDataExtensions
 	{
+		public static T Set<T>(this ViewDataDictionary viewData, T obj, bool fullName = false)
+		{
+			var type = typeof(T);
+			viewData[fullName ? type.FullName : type.Name] = obj;
+			return obj;
+		}
+
+		public static T Get<T>(this ViewDataDictionary viewData, bool fullName = false)
+		{
+			var type = typeof(T);
+			return (T)viewData[fullName ? type.FullName : type.Name];
+		}
+
 		public static T As<T>(this ViewDataDictionary viewData, string key)
 		{
 			return (T)viewData[key];
