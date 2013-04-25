@@ -9,7 +9,7 @@
     <projectUrl>https://github.com/hVostt/Web.Mvc</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>ASP.NET MVC 4 Useful Extensions</description>
-    <releaseNotes>Added StringExtensions and NotFoundHttpException.</releaseNotes>
+    <releaseNotes>Extended ViewData with As*&lt;T&gt;, Get&lt;T&gt;/Set&lt;T&gt; and other...</releaseNotes>
     <copyright>Copyright 2013</copyright>
     <tags>asp.net mvc4 extensions</tags>
   </metadata>
