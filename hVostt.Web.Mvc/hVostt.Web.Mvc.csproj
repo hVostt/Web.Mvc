@@ -49,8 +49,8 @@
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\NumeralExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Helpers\Title\TitleHelpers.cs" />
     <Compile Include="Js.cs" />
-    <Compile Include="Helpers\LayoutHelpers.cs" />
     <Compile Include="Extensions\LinqExtensions.cs" />
     <Compile Include="NotFoundHttpException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

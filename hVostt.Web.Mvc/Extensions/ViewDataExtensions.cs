@@ -176,9 +176,10 @@ namespace hVostt.Web.Mvc.Extensions
 		/// </summary>
 		/// <param name="viewData">ViewData</param>
 		/// <param name="title">Title</param>
-		public static void SetTitle(this ViewDataDictionary viewData, string title)
+		public static string SetTitle(this ViewDataDictionary viewData, string title)
 		{
 			viewData[TitleKeyName] = title;
+			return title;
 		}
 
 		/// <summary>
@@ -187,10 +188,11 @@ namespace hVostt.Web.Mvc.Extensions
 		/// <param name="viewData">ViewData</param>
 		/// <param name="title">Title</param>
 		/// <param name="subTitle">SubTitle</param>
-		public static void SetTitle(this ViewDataDictionary viewData, string title, string subTitle)
+		public static string SetTitle(this ViewDataDictionary viewData, string title, string subTitle)
 		{
 			viewData[TitleKeyName] = title;
 			viewData[SubTitleKeyName] = subTitle;
+			return title;
 		}
 
 		/// <summary>

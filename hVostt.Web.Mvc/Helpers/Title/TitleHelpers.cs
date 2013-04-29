@@ -3,9 +3,9 @@ using System.Web;
 using System.Web.Mvc;
 using hVostt.Web.Mvc.Extensions;
 
-namespace hVostt.Web.Mvc.Helpers
+namespace hVostt.Web.Mvc.Helpers.Title
 {
-	public static class LayoutHelpers
+	public static class TitleHelpers
 	{
 		public static string TitleFormat = "<h2 class=\"title\">{0}</h2>";
 		public static string SubTitleFormat = "<hgroup class=\"title\"><h2>{0}</h2><h3>{1}</h3></hgroup>";
