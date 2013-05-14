@@ -56,6 +56,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensions\ViewDataExtensions.cs" />
     <Compile Include="Extensions\WebViewPageExtensions.cs" />
+    <Compile Include="Translit\Metagraphy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
