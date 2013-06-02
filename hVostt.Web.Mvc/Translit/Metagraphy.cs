@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Text;
 
 namespace hVostt.Web.Mvc.Translit
 {
-
-
+	/// <summary>
+	/// NO USE !! IN DEVELOPMENT !!
+	/// </summary>
 	public class Metagraphy
 	{
 		private readonly Dictionary<char, string> _table = new Dictionary<char, string>(50);
