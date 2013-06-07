@@ -73,6 +73,7 @@
     <Compile Include="Helpers\Title\TitleHelpers.cs" />
     <Compile Include="Js.cs" />
     <Compile Include="Extensions\LinqExtensions.cs" />
+    <Compile Include="NoDisplayAttributeException.cs" />
     <Compile Include="NotFoundHttpException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensions\ViewDataExtensions.cs" />

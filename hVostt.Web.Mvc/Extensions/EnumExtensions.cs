@@ -116,83 +116,118 @@ namespace hVostt.Web.Mvc.Extensions
 			if (values == null)
 				return GetSelectList(typeof(T));
 
-			var type = typeof(T);
-			var list = (from T val in Enum.GetValues(type)
-						let field = type.GetField(Enum.GetName(type, val))
-						let display = field.GetCustomAttribute<DisplayAttribute>()
-						let generate = display.GetAutoGenerateField()
-						where !generate.HasValue || generate.Value
-						select new SelectListItem
-						{
-							Value = val.ToString(),
-							Text = display.GetName(),
-							Selected = values.Contains(val)
-						})
-						.ToList();
-			return list;
+			try
+			{
+				var type = typeof(T);
+				var list = (from T val in Enum.GetValues(type)
+							let field = type.GetField(Enum.GetName(type, val))
+							let display = field.GetCustomAttribute<DisplayAttribute>()
+							let generate = display.GetAutoGenerateField()
+							where !generate.HasValue || generate.Value
+							select new SelectListItem
+								{
+									Value = val.ToString(),
+									Text = display.GetName(),
+									Selected = values.Contains(val)
+								})
+					.ToList();
+				return list;
+			}
+			catch (NullReferenceException)
+			{
+				throw new NoDisplayAttributeException();
+			}
 		}
 
 		public static IList<SelectListItem> GetSelectList(Type type)
 		{
-			var list = (from Enum val in Enum.GetValues(type)
-						let display = Display(type, val)
-						let generate = display.GetAutoGenerateField()
-						where !generate.HasValue || generate.Value
-						select new SelectListItem
-						{
-							Value = val.ToString(),
-							Text = display.GetName(),
-						})
-						.ToList();
-			return list;
+			try
+			{
+				var list = (from Enum val in Enum.GetValues(type)
+							let display = Display(type, val)
+							let generate = display.GetAutoGenerateField()
+							where !generate.HasValue || generate.Value
+							select new SelectListItem
+								{
+									Value = val.ToString(),
+									Text = display.GetName(),
+								})
+					.ToList();
+				return list;
+			}
+			catch (NullReferenceException)
+			{
+				throw new NoDisplayAttributeException();
+			}
 		}
 
 		public static IList<SelectListItem> GetSelectList(Type type, Enum value)
 		{
-			var list = (from Enum val in Enum.GetValues(type)
-						let display = Display(type, val)
-						let generate = display.GetAutoGenerateField()
-						where !generate.HasValue || generate.Value
-						select new SelectListItem
-						{
-							Value = val.ToString(),
-							Text = display.GetName(),
-							Selected = val.Equals(value)
-						})
-						.ToList();
-			return list;
+			try
+			{
+				var list = (from Enum val in Enum.GetValues(type)
+							let display = Display(type, val)
+							let generate = display.GetAutoGenerateField()
+							where !generate.HasValue || generate.Value
+							select new SelectListItem
+								{
+									Value = val.ToString(),
+									Text = display.GetName(),
+									Selected = val.Equals(value)
+								})
+					.ToList();
+				return list;
+			}
+			catch (NullReferenceException)
+			{
+				throw new NoDisplayAttributeException();
+			}
 		}
 
 		public static IList<SelectListItem> GetMultiSelectList(Type type, Enum value)
 		{
-			var list = (from Enum val in Enum.GetValues(type)
-						let display = Display(type, val)
-						let generate = display.GetAutoGenerateField()
-						where !generate.HasValue || generate.Value
-						select new SelectListItem
-						{
-							Value = val.ToString(),
-							Text = display.GetName(),
-							Selected = value.HasFlag(val)
-						})
-						.ToList();
-			return list;
+			try
+			{
+				var list = (from Enum val in Enum.GetValues(type)
+							let display = Display(type, val)
+							let generate = display.GetAutoGenerateField()
+							where !generate.HasValue || generate.Value
+							select new SelectListItem
+								{
+									Value = val.ToString(),
+									Text = display.GetName(),
+									Selected = value.HasFlag(val)
+								})
+					.ToList();
+				return list;
+			}
+			catch (NullReferenceException)
+			{
+				throw new NoDisplayAttributeException();
+			}
 		}
 
 		public static IList<SelectListItem> GetMultiSelectList(Type type, IEnumerable<Enum> values)
 		{
-			var list = (from Enum val in Enum.GetValues(type)
-						let display = Display(type, val)
-						let generate = display.GetAutoGenerateField()
-						where !generate.HasValue || generate.Value
-						select new SelectListItem
-						{
-							Value = val.ToString(),
-							Text = display.GetName(),
-							Selected = values.Contains(val)
-						})
-						.ToList();
-			return list;
+			try
+			{
+				var list = (from Enum val in Enum.GetValues(type)
+							let display = Display(type, val)
+							let generate = display.GetAutoGenerateField()
+							where !generate.HasValue || generate.Value
+							select new SelectListItem
+								{
+									Value = val.ToString(),
+									Text = display.GetName(),
+									Selected = values.Contains(val)
+								})
+					.ToList();
+				return list;
+			}
+			catch (NullReferenceException)
+			{
+				throw new NoDisplayAttributeException();
+			}
 		}
 
 		#endregion SelectList Methods
