@@ -62,9 +62,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\ControllerExtensions.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\NumeralExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\ViewContextExtensions.cs" />
     <Compile Include="Helpers\Meta\DocumentState.cs" />
     <Compile Include="Helpers\Meta\MetaTag.cs" />
     <Compile Include="Helpers\Meta\MetaBuilder.cs" />
