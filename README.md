@@ -76,6 +76,9 @@ bool IsCurrent(this ViewContext viewContext, string action, string controller)
 ### WebViewPageExtensions
 
 ```c#
+TimeZoneManager GetTimeZoneManager(this WebViewPage page)
+DateTime FromUtc(this WebViewPage page, DateTime dateTime)
+DateTime? FromUtc(this WebViewPage page, DateTime? dateTime)
 void RedefineSection(this WebPageBase page, string sectionName)
 void RedefineSection(this WebPageBase page, params string[] sectionNames)
 ```
@@ -104,10 +107,10 @@ string GetSubTitle(this ViewDataDictionary viewData)
 ### ControllerExtensions
 
 ```c#
-void SetCurrentTimeZone(this ControllerBase controller, TimeZoneInfo timeZone)
-TimeZoneInfo GetCurrentTimeZone(this ControllerBase controller, TimeZoneInfo defaultTimeZone = null)
-DateTime FromUtc(this ControllerBase controller, DateTime dt, TimeZoneInfo defaultTimeZone = null)
-DateTime? FromUtc(this ControllerBase controller, DateTime? dt, TimeZoneInfo defaultTimeZone = null)
+void SetCurrentTimeZone(this Controller controller, TimeZoneInfo timeZone)
+TimeZoneInfo GetCurrentTimeZone(this Controller controller)
+DateTime FromUtc(this Controller controller, DateTime dateTime)
+DateTime? FromUtc(this Controller controller, DateTime? dateTime)
 ```
 
 ## Helpers
@@ -161,8 +164,8 @@ IHtmlString MetaPartial(this HtmlHelper html)
 ```c#
   public class Js
   {
-		public static readonly IHtmlString Void = new HtmlString("javascript:void(0)");
-		public static readonly IHtmlString Back = new HtmlString("javascript:history.back();");
+		static readonly IHtmlString Void = new HtmlString("javascript:void(0)");
+		static readonly IHtmlString Back = new HtmlString("javascript:history.back();");
   }
 ```
 
@@ -170,6 +173,32 @@ IHtmlString MetaPartial(this HtmlHelper html)
 
 ```html
 <a href="@Js.Void" onclick="doSomething();">Click me!</a>
+```
+
+## TimeZoneManager
+
+```c#
+public class TimeZoneManager
+{
+	static string SessionKey = "TimeZone";
+
+	TimeZoneManager();
+	TimeZoneManager(HttpSessionStateBase session);
+	TimeZoneManager(HttpSessionState session);
+	TimeZoneManager(TimeZoneInfo timeZoneInfo);
+
+	TimeZoneInfo Current { get; }
+
+	DateTime FromUtc(DateTime dateTime);
+	DateTime? FromUtc(DateTime? dateTime);
+	DateTime ToUtc(DateTime dateTime);
+	DateTime? ToUtc(DateTime? dateTime);
+
+	static void SetCurrent(HttpSessionStateBase session, TimeZoneInfo timeZoneInfo);
+	static void SetCurrent(HttpSessionState session, TimeZoneInfo timeZoneInfo);
+	static TimeZoneInfo GetCurrent(HttpSessionStateBase session);
+	static TimeZoneInfo GetCurrent(HttpSessionState session);
+}
 ```
 
 ## Exceptions
