@@ -6,16 +6,19 @@ namespace hVostt.Web.Mvc.Extensions
 {
 	public static class WebViewPageExtensions
 	{
-		[Obsolete("use Controller.FromUtc extension")]
-		public static DateTime FromUtc(this WebViewPage page, DateTime dt)
+		public static TimeZoneManager GetTimeZoneManager(this WebViewPage page)
 		{
-			return page.ViewContext.Controller.FromUtc(dt);
+			return new TimeZoneManager(page.Session);
 		}
 
-		[Obsolete("use Controller.FromUtc extension")]
-		public static DateTime? FromUtc(this WebViewPage page, DateTime? dt)
+		public static DateTime FromUtc(this WebViewPage page, DateTime dateTime)
 		{
-			return page.ViewContext.Controller.FromUtc(dt);
+			return GetTimeZoneManager(page).FromUtc(dateTime);
+		}
+
+		public static DateTime? FromUtc(this WebViewPage page, DateTime? dateTime)
+		{
+			return GetTimeZoneManager(page).FromUtc(dateTime);
 		}
 
 		public static void RedefineSection(this WebPageBase page, string sectionName)

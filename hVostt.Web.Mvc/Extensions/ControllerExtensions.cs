@@ -5,35 +5,24 @@ namespace hVostt.Web.Mvc.Extensions
 {
 	public static class ControllerExtensions
 	{
-		public static void SetCurrentTimeZone(this ControllerBase controller, TimeZoneInfo timeZone)
+		public static void SetCurrentTimeZone(this Controller controller, TimeZoneInfo timeZone)
 		{
-			if (timeZone == null)
-				throw new ArgumentNullException("timeZone");
-			var session = controller.ControllerContext.HttpContext.Session;
-			if (session == null)
-				throw new NullReferenceException("Session is null");
-			session["TimeZone"] = timeZone;
+			TimeZoneManager.SetCurrent(controller.Session, timeZone);
 		}
 
-		public static TimeZoneInfo GetCurrentTimeZone(this ControllerBase controller, TimeZoneInfo defaultTimeZone = null)
+		public static TimeZoneInfo GetCurrentTimeZone(this Controller controller)
 		{
-			var session = controller.ControllerContext.HttpContext.Session;
-			var tz = (session == null) ? null : session["TimeZone"] as TimeZoneInfo;
-			return tz ?? defaultTimeZone ?? TimeZoneInfo.Local;
+			return TimeZoneManager.GetCurrent(controller.Session);
 		}
 
-		public static DateTime FromUtc(this ControllerBase controller, DateTime dt, TimeZoneInfo defaultTimeZone = null)
+		public static DateTime FromUtc(this Controller controller, DateTime dateTime)
 		{
-			return TimeZoneInfo.ConvertTimeFromUtc(dt, GetCurrentTimeZone(controller, defaultTimeZone));
+			return new TimeZoneManager(controller.Session).FromUtc(dateTime);
 		}
 
-		public static DateTime? FromUtc(this ControllerBase controller, DateTime? dt, TimeZoneInfo defaultTimeZone = null)
+		public static DateTime? FromUtc(this Controller controller, DateTime? dateTime)
 		{
-			if (dt.HasValue)
-			{
-				return TimeZoneInfo.ConvertTimeFromUtc(dt.Value, GetCurrentTimeZone(controller, defaultTimeZone));
-			}
-			return null;
+			return new TimeZoneManager(controller.Session).FromUtc(dateTime);
 		}
 	}
 }
