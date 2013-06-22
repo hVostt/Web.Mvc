@@ -21,6 +21,20 @@ namespace hVostt.Web.Mvc.Extensions
 		}
 
 		/// <summary>
+		/// Crop string if length is greater <paramref name="maxLength"/>
+		/// </summary>
+		/// <param name="str">Source string</param>
+		/// <param name="maxLength">Max length to crop</param>
+		/// <returns>Cropped to <paramref name="maxLength"/> length</returns>
+		public static string Crop(this string str, int maxLength)
+		{
+			if (str == null) return null;
+			return str.Length > maxLength
+					   ? str.Substring(0, maxLength)
+					   : str;
+		}
+
+		/// <summary>
 		/// Replaces one or more format items in a specified string with the string representation
 		/// of a specified object.
 		/// </summary>

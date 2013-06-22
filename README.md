@@ -4,6 +4,16 @@ ASP.NET MVC 4 Useful Extensions
 
 ## Extensions
 
+### DateTimeExtensions
+
+```c#
+DateTime Epoc = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+long ToUnixTime(this DateTime dateTime)
+DateTime FromUnixTime(this long timestamp)
+TimeSpan ToTime(this DateTime dateTime)
+int DayOfWeekByMonday(this DateTime dateTime)
+```
+
 ### EnumExtensions
 
 #### extensions
@@ -58,6 +68,7 @@ IHtmlString ToRaw(this int i)
 
 ```c#
 IHtmlString ToRaw(this string str)
+string Crop(this string str, int maxLength)
 string F(this string format, object arg0)
 string F(this string format, params object[] args)
 string F(this string format, IFormatProvider provider, params object[] args)
