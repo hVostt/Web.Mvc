@@ -6,7 +6,10 @@ namespace hVostt.Web.Mvc
 {
 	public class TimeZoneManager
 	{
-		public static string SessionKey = "TimeZone";
+		/// <summary>
+		/// Session key
+		/// </summary>
+		public static string Key = "TimeZone";
 
 		private readonly TimeZoneInfo _currentTimeZone;
 
@@ -39,11 +42,41 @@ namespace hVostt.Web.Mvc
 		}
 
 		/// <summary>
-		/// DateTime.UtcNow converted to current time zone
+		/// DateTime.Now converted to current time zone
 		/// </summary>
 		public DateTime Now
 		{
-			get { return TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, _currentTimeZone); }
+			get { return TimeZoneInfo.ConvertTime(DateTime.Now, _currentTimeZone); }
+		}
+
+		/// <summary>
+		/// Converts a time to the time in current time zone.
+		/// </summary>
+		/// <param name="dateTime">DateTime to convert</param>
+		/// <returns>DateTime in current time zone</returns>
+		public DateTime Convert(DateTime dateTime)
+		{
+			return TimeZoneInfo.ConvertTime(dateTime, _currentTimeZone);
+		}
+
+		/// <summary>
+		/// Converts a time to the time in current time zone.
+		/// </summary>
+		/// <param name="dateTimeOffset">DateTimeOffset to convert</param>
+		/// <returns>DateTimeOffset in current time zone</returns>
+		public DateTimeOffset Convert(DateTimeOffset dateTimeOffset)
+		{
+			return TimeZoneInfo.ConvertTime(dateTimeOffset, _currentTimeZone);
+		}
+
+		/// <summary>
+		/// Converts a time to the time in current time zone with offset.
+		/// </summary>
+		/// <param name="dateTime">DateTime to convert</param>
+		/// <returns>DateTimeOffset in current time zone</returns>
+		public DateTimeOffset ConvertToOffset(DateTime dateTime)
+		{
+			return TimeZoneInfo.ConvertTime(new DateTimeOffset(dateTime), _currentTimeZone);
 		}
 
 		/// <summary>
@@ -54,8 +87,6 @@ namespace hVostt.Web.Mvc
 		/// <returns>DateTime in current time zone</returns>
 		public DateTime FromUtc(DateTime dateTime, bool skipCheckKind = false)
 		{
-			if (!skipCheckKind && dateTime.Kind != DateTimeKind.Utc)
-				throw new ArgumentException("DateTime must be in UTC", "dateTime");
 			return TimeZoneInfo.ConvertTimeFromUtc(dateTime, _currentTimeZone);
 		}
 
@@ -79,9 +110,7 @@ namespace hVostt.Web.Mvc
 		/// <returns>DateTime in UTC</returns>
 		public DateTime ToUtc(DateTime dateTime)
 		{
-			return dateTime.Kind == DateTimeKind.Utc
-				? dateTime
-				: TimeZoneInfo.ConvertTimeToUtc(dateTime, _currentTimeZone);
+			return TimeZoneInfo.ConvertTimeToUtc(dateTime, _currentTimeZone);
 		}
 
 		/// <summary>
@@ -107,7 +136,7 @@ namespace hVostt.Web.Mvc
 				throw new ArgumentNullException("timeZoneInfo");
 			if (session == null)
 				throw new ArgumentNullException("session");
-			session[SessionKey] = timeZoneInfo;
+			session[Key] = timeZoneInfo;
 		}
 
 		/// <summary>
@@ -121,7 +150,7 @@ namespace hVostt.Web.Mvc
 				throw new ArgumentNullException("timeZoneInfo");
 			if (session == null)
 				throw new ArgumentNullException("session");
-			session[SessionKey] = timeZoneInfo;
+			session[Key] = timeZoneInfo;
 		}
 
 		/// <summary>
@@ -133,7 +162,7 @@ namespace hVostt.Web.Mvc
 		{
 			if (session == null)
 				throw new ArgumentNullException("session");
-			return session[SessionKey] as TimeZoneInfo;
+			return session[Key] as TimeZoneInfo;
 		}
 
 		/// <summary>
@@ -145,7 +174,7 @@ namespace hVostt.Web.Mvc
 		{
 			if (session == null)
 				throw new ArgumentNullException("session");
-			return session[SessionKey] as TimeZoneInfo;
+			return session[Key] as TimeZoneInfo;
 		}
 	}
 }

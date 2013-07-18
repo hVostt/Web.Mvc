@@ -51,5 +51,34 @@ namespace hVostt.Web.Mvc.Extensions
 			if (dateTime.DayOfWeek == DayOfWeek.Sunday) return 6;
 			return (int)dateTime.DayOfWeek - 1;
 		}
+
+		/// <summary>
+		/// Convert <paramref name="dateTime"/> to Last Modified DateTime format (without milliseconds)
+		/// </summary>
+		/// <remarks>
+		/// <paramref name="dateTime"/> auto converted to UTC, if need
+		/// </remarks>
+		/// <param name="dateTime">Source DateTime</param>
+		/// <returns>dateTime without milliseconds</returns>
+		public static DateTime ToLastModified(this DateTime dateTime)
+		{
+			if (dateTime.Kind == DateTimeKind.Local)
+				dateTime = dateTime.ToUniversalTime();
+			return new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, dateTime.Minute, dateTime.Second, dateTime.Kind);
+		}
+
+		/// <summary>
+		/// Convert <paramref name="dateTimeOffset"/> to Last Modified DateTime format (without milliseconds)
+		/// </summary>
+		/// <remarks>
+		/// <paramref name="dateTimeOffset"/> auto converted to UTC
+		/// </remarks>
+		/// <param name="dateTimeOffset">Source DateTimeOffset</param>
+		/// <returns>dateTime without milliseconds</returns>
+		public static DateTime ToLastModified(this DateTimeOffset dateTimeOffset)
+		{
+			var dateTime = dateTimeOffset.UtcDateTime;
+			return new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, dateTime.Minute, dateTime.Second, dateTime.Kind);
+		}
 	}
 }

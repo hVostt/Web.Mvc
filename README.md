@@ -12,6 +12,8 @@ long ToUnixTime(this DateTime dateTime)
 DateTime FromUnixTime(this long timestamp)
 TimeSpan ToTime(this DateTime dateTime)
 int DayOfWeekByMonday(this DateTime dateTime)
+DateTime ToLastModified(this DateTime dateTime)
+DateTime ToLastModified(this DateTimeOffset dateTimeOffset)
 ```
 
 ### EnumExtensions
@@ -122,6 +124,8 @@ void SetCurrentTimeZone(this Controller controller, TimeZoneInfo timeZone)
 TimeZoneInfo GetCurrentTimeZone(this Controller controller)
 DateTime FromUtc(this Controller controller, DateTime dateTime)
 DateTime? FromUtc(this Controller controller, DateTime? dateTime)
+DateTime? IfModifiedSince(this Controller controller)
+bool IfModifiedSince(this Controller controller, DateTime updated, bool updatedInLastModifiedFormat = false)
 ```
 
 ## Helpers
@@ -199,6 +203,10 @@ public class TimeZoneManager
 	TimeZoneManager(TimeZoneInfo timeZoneInfo);
 
 	TimeZoneInfo Current { get; }
+
+	DateTime Convert(DateTime dateTime);
+	DateTimeOffset Convert(DateTimeOffset dateTimeOffset)
+	DateTimeOffset ConvertToOffset(DateTime dateTime)
 
 	DateTime FromUtc(DateTime dateTime);
 	DateTime? FromUtc(DateTime? dateTime);
