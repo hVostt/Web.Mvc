@@ -40,11 +40,14 @@ namespace hVostt.Web.Mvc.Extensions
 
 		public static bool IfModifiedSince(this Controller controller, DateTime updated, bool updatedInLastModifiedFormat = false)
 		{
-			if (!updatedInLastModifiedFormat)
-				updated = updated.ToLastModified();
 			var ifModifiedSince = IfModifiedSince(controller);
-			return ifModifiedSince.HasValue
-				&& updated > ifModifiedSince.Value;
+			if (ifModifiedSince.HasValue)
+			{
+				if (!updatedInLastModifiedFormat)
+					updated = updated.ToLastModified();
+				return updated > ifModifiedSince.Value;
+			}
+			return true;
 		}
 	}
 }
