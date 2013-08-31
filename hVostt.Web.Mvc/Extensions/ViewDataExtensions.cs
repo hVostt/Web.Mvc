@@ -214,36 +214,5 @@ namespace hVostt.Web.Mvc.Extensions
 		{
 			return (string)viewData[SubTitleKeyName];
 		}
-
-		[Obsolete("use SetTitle()")]
-		public static void Title(this ViewDataDictionary viewData, string title)
-		{
-			viewData[TitleKeyName] = title;
-		}
-
-		[Obsolete("no more use it, only SetTitle")]
-		public static void SubTitle(this ViewDataDictionary viewData, string subTitle)
-		{
-			viewData[SubTitleKeyName] = subTitle;
-		}
-
-		[Obsolete("use SetTitle()")]
-		public static void Title(this ViewDataDictionary viewData, string title, string subTitle)
-		{
-			viewData[TitleKeyName] = title;
-			viewData[SubTitleKeyName] = subTitle;
-		}
-
-		[Obsolete("use GetTitle()")]
-		public static string Title(this ViewDataDictionary viewData)
-		{
-			return (string)viewData[TitleKeyName];
-		}
-
-		[Obsolete("use GetSubTitle()")]
-		public static string SubTitle(this ViewDataDictionary viewData)
-		{
-			return (string)viewData[SubTitleKeyName];
-		}
 	}
 }
