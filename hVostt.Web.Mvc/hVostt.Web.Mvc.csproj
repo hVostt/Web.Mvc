@@ -65,6 +65,7 @@
     <Compile Include="Extensions\ControllerExtensions.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="Extensions\HttpRequestBaseExtensions.cs" />
     <Compile Include="Extensions\NumeralExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\ViewContextExtensions.cs" />
