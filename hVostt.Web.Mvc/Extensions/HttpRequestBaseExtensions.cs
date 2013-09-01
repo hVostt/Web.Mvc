@@ -28,14 +28,14 @@ namespace hVostt.Web.Mvc.Extensions
 		/// </summary>
 		/// <param name="request">Request</param>
 		/// <param name="lastModified">Last modified DateTime</param>
-		/// <param name="updatedInLastModifiedFormat">Set to true, if <paramref name="lastModified" /> without milliseconds</param>
+		/// <param name="isLastModifiedTruncated">Set to true, if <paramref name="lastModified" /> milliseconds already truncated</param>
 		/// <returns>Returns false if it is possible to response with status code 304 (Not Modified)</returns>
-		public static bool IfModifiedSince(this HttpRequestBase request, DateTime lastModified, bool updatedInLastModifiedFormat = false)
+		public static bool IfModifiedSince(this HttpRequestBase request, DateTime lastModified, bool isLastModifiedTruncated = false)
 		{
 			var ifModifiedSince = IfModifiedSince(request);
 			if (ifModifiedSince.HasValue)
 			{
-				if (!updatedInLastModifiedFormat)
+				if (!isLastModifiedTruncated)
 					lastModified = lastModified.ToLastModified();
 				return lastModified > ifModifiedSince.Value;
 			}
